@@ -7,7 +7,7 @@ def parseInput():
 
 def reducer():
     for key, values in itertools.groupby(parseInput(), operator.itemgetter(0)):
-        print '%s\t%s' % (key, values)
+        pass
 
 if __name__=='__main__':
     reducer()

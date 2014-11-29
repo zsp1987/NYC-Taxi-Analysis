@@ -2,6 +2,9 @@
 # first delete output files
 rm -rf output/q3
 
+# test code
+cat inputtest/trip_data_test_1 | python q3map.py| sort
+
 # first mapreduce will
 $HADOOP_HOME/bin/hadoop  jar $HADOOP_HOME/contrib/streaming/hadoop-streaming-1.0.3.jar \
     -input inputtest/trip_fare_test* \
