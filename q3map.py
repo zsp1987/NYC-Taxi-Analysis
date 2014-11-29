@@ -16,5 +16,5 @@ def mapper():
         pic_tm = value[5]
         dp_tm = value[6]
         pic_dt = datetime.datetime.strptime(pic_tm, '%Y-%m-%d %H:%M:%S')
-        pic_date = datetime.date
-
+        pic_date = pic_dt.strptime("%Y-%m-%d")
+        print "%s\t%s\t%s\t%s\t%s"
