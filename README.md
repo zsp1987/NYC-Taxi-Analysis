@@ -17,10 +17,10 @@ Problems we solved include the following:
 
 Author
 ======
-Shaopeng Zhang
+	Shaopeng Zhang
 
 Contributors
 ======
-Guang Xiong
-Hao Chen
+	Guang Xiong
+	Hao Chen
 
