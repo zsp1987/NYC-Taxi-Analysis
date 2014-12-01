@@ -9,6 +9,7 @@ def reducer():
     for key, values in itertools.groupby(parseInput(), operator.itemgetter(0)):
         count = sum(map(float, zip(*values)[1]))
         print '%s\t%s' % (key, count)
+        #print '%s\t%s' %(key,values)
 
 if __name__=='__main__':
     reducer()
