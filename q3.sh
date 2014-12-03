@@ -8,7 +8,7 @@ rm -rf output/q3
 
 # hadoop streamming job
 $HADOOP_HOME/bin/hadoop  jar $HADOOP_HOME/contrib/streaming/hadoop-streaming-1.0.3.jar \
-    -input inputtest/trip_data* \
+    -input input/trip_data* \
     -output output/q3/ \
     -mapper q3map.py \
     -reducer q3rd.py
