@@ -3,19 +3,54 @@ import itertools, operator, sys, datetime
 
 def parseInput():
     for line in sys.stdin:
-        yield line.strip('\n').split('\t')
+        if len(line)>0:
+            line = line.strip()
+
 
 def reducer():
-    for key, values in itertools.groupby(parseInput(), operator.itemgetter(0,1,2)):
+    current_key = None
+    current_list = []
+    for line in parseInput():
+        key, pic_tm, drp_tm = line.split('\t')
+        try:
+            pic_tm = datetime.datetime.strptime(pic_tm, "%Y-%m-%d %H:%M:%S")
+            drp_tm = datetime.datetime.strptime(drp_tm, "%Y-%m-%d %H:%M:%S")
+        except E:
+            continue
+        if current_key == key:
+            current_key.append((pic_tm, drp_tm))   
+        else:
+            if current_key and current_list:
+                current_list.sort()
+                last_drp_tm = None
+                minutes = 0
+                for pic_tm,drp_tm in current_list:
+                    if last_drp_tm:
+                        minutes += (pic_tm - last_drp_tm).seconds/60.0
+                    last_drp_tm = drp_tm
+                print '%s\t%s' % (current_key[-10], minutes)
+            
+            current_key = key
+            current_list = []
+    if current_key == key:
+        current_list.sort()
+        last_drp_tm = None
         minutes = 0
-        last_drp_time = None
-        for value in values:
-            pick_time = datetime.datetime.strptime(value[3], "%Y-%m-%d %H:%M:%S")
-            drp_time = datetime.datetime.strptime(value[4], "%Y-%m-%d %H:%M:%S")
-            if last_drp_time:
-                minutes += (pick_time-last_drp_time).seconds/60.0
-            last_drp_time=drp_time
-        print '%s\t%s' % (key, minutes)
+        for pic_tm,drp_tm in current_list:
+            if last_drp_tm:
+                minutes += (pic_tm - last_drp_tm).seconds/60.0
+            last_drp_tm = drp_tm
+        print '%s\t%s' % (current_key[-10], minutes)
+
+if __name__=='__main__':
+    reducer()
+
+
+
+
+
+
+
 
 if __name__=='__main__':
     reducer()
