@@ -17,7 +17,7 @@ def mapper():
         dp_tm = value[6]
         pic_dt = datetime.datetime.strptime(pic_tm, '%Y-%m-%d %H:%M:%S')
         pic_date = pic_dt.date()
-        print "%s\t%s\t%s\t%s\t%s" % (medallion, drv_lcn, pic_date, pic_tm, dp_tm)
+        print "%s%s%s\t%s\t%s" % (medallion, drv_lcn, pic_date, pic_tm, dp_tm)
 
 if __name__=='__main__':
     mapper()

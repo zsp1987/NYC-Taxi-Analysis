@@ -3,11 +3,11 @@
 import sys
 
 def parseInput():
-   for line in sys.stdin:
-       line = line.strip()
-       values = line.split(',')
-       if len(values)>1 and values[0]!='medallion':
-           yield values
+    for line in sys.stdin:
+        line = line.strip()
+        values = line.split(',')
+        if len(values)>1 and values[0]!='medallion':
+            yield values
 
 def mapper():
     for values in parseInput():
