@@ -17,6 +17,7 @@ Problems we solved include the following:
 Author
 ======
 	Shaopeng Zhang
-	Guang Xiong
 	Hao Chen
+	Guang Xiong
+	
 

@@ -27,7 +27,7 @@ def readNeighborhood(shapeFilename, index, neighborhoods):
 
 def parseInput():
     for line in sys.stdin:
-        line = line.strip('\n')
+        line = line.strip()
         values = line.split(',')
         if len(values)>1 and values[0]!='medallion': 
             yield values
@@ -36,15 +36,17 @@ def mapper():
     index = rtree.Index()
     neighborhoods = []
     readNeighborhood('neighborhoods/ZillowNeighborhoods-NY.shp', index, neighborhoods)
-    agg = {}
     for values in parseInput():
-        pickup_location = (float(values[10]), float(values[11]))
-        pickup_neighborhood = findNeighborhood(pickup_location, index, neighborhoods)
-        if pickup_neighborhood!=-1:
-            agg[pickup_neighborhood] = agg.get(pickup_neighborhood, 0) + 1
-
-    for item in agg.iteritems():
-        print '%s\t%s' % (neighborhoods[item[0]][0], item[1])
+        neighborhoods=-1        # default as first
+        total = -1              # default as first
+        medallion = values[0]
+        drv_lcn  = values[1]
+        if len(values) == 14: # trip_data
+            pickup_location = (float(values[10]), float(values[11]))
+            pickup_neighborhood = findNeighborhood(pickup_location, index, neighborhoods)
+        else: # trip_fare
+            total = float(values[10])
+        print '%s%s\t%s\t%s' % (medallion, drv_lcn, pickup_neighborhood, total)
 
 if __name__=='__main__':
     mapper()

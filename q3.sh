@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # clean up output folder
-rm -rf output/q3
+# rm -rf output/q3
 
 # test code
 # cat inputtest/trip_data_test_1 | python q3map.py| sort |python q3rd.py
