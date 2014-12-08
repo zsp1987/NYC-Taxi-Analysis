@@ -1,15 +1,49 @@
 #!/usr/bin/env python
-import itertools, operator, sys
+import sys
+from itertools import groupby
 
 def parseInput():
     for line in sys.stdin:
-        yield line.strip('\n').split('\t')
+        if len(line)>0:
+            line = line.strip()
+            yield line
+
+def most_common(list):
+    return max(set(list), key=list.count)
 
 def reducer():
-    agg = {}
-    for key, values in itertools.groupby(parseInput(), operator.itemgetter(0)):
-        count = sum(map(int, zip(*values)[1]))
-        print '%s\t%s' % (key, count)
-
+    current_key = None
+    neighbor_list = []
+    current_amount = 0.0
+    for line in parseInput():
+        key, neighbor, amount = line.split('\t')
+        if key == current_key:
+            if amount == '-1': # location line
+                neighbor_list.append(neighbor)
+            else:
+                try:
+                    amount = float(amount)
+                    current_amount += amount
+                except Exception:
+                    continue
+        else: # key changes
+            if current_key and neighbor_list:
+                neighbor = most_common(neighbor_list)
+                print "%s\t%s" % (neighbor, current_amount)
+            current_key = key
+            neighbor_list = []
+            current_amount = 0.0
+            if amount == '-1': # location line
+                neighbor_list.append(neighbor)
+            else:
+                try:
+                    amount = float(amount)
+                    current_amount += amount
+                except Exception:
+                    continue
+    if key == current_key: #final clean up
+        if key == current_key and neighbor_list:
+            neighbor = most_common(neighbor_list)
+            print "%s\t%s" % (neighbor, current_amount)
 if __name__=='__main__':
     reducer()

@@ -35,18 +35,19 @@ def parseInput():
 def mapper():
     index = rtree.Index()
     neighborhoods = []
-    readNeighborhood('neighborhoods/ZillowNeighborhoods-NY.shp', index, neighborhoods)
+    readNeighborhood('ZillowNeighborhoods-NY.shp', index, neighborhoods)
     for values in parseInput():
-        neighborhoods=-1        # default as first
+        pickup_neighborhood=-1        # default as first
         total = -1              # default as first
-        medallion = values[0]
         drv_lcn  = values[1]
         if len(values) == 14: # trip_data
             pickup_location = (float(values[10]), float(values[11]))
             pickup_neighborhood = findNeighborhood(pickup_location, index, neighborhoods)
+            print '%s\t%s\t%s' % (drv_lcn, neighborhoods[pickup_neighborhood][0], total)
         else: # trip_fare
             total = float(values[10])
-        print '%s%s\t%s\t%s' % (medallion, drv_lcn, pickup_neighborhood, total)
+            print '%s\t%s\t%s' % (drv_lcn, pickup_neighborhood, total)
+
 
 if __name__=='__main__':
     mapper()
