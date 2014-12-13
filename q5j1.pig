@@ -1,3 +1,5 @@
+-- for negative income
+
 FARE_RAW = LOAD 's3://zcxfinalproject/input/trip_fare_*.csv' USING PigStorage(',') AS (medallion:chararray, hack_license:chararray, vendor_id:chararray, pickup_datetime:chararray, payment_type:chararray, fare_amount:double, surcharge:double, mta_tax:double, tip_amount:double, tolls_amount:double, total_amount:double);
 
 FARE = FILTER FARE_RAW BY medallion != 'medallion';
