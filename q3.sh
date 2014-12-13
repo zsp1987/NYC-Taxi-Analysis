@@ -9,6 +9,6 @@
 # hadoop streamming job
 $HADOOP_HOME/bin/hadoop  jar $HADOOP_HOME/contrib/streaming/hadoop-streaming-1.0.3.jar \
     -input input/trip_data* \
-    -output output/q3/ \
+    -output output/q3j1/ \
     -mapper q3map.py \
     -reducer q3rd.py

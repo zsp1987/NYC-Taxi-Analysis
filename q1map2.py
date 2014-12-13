@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-__author__ = 'spzhang'
-
-import sys, datetime
+import sys
 
 def parseInput():
     for line in sys.stdin:
@@ -10,10 +8,9 @@ def parseInput():
             yield line
 
 def mapper():
-    # just sort the input by mapper
     for line in parseInput():
-        pickup_date, time_interval = line.split('\t')
-        print '%s\t%s' % (pickup_date, time_interval)
+        neighbor, income = line.split('\t')
+        print '%s\t%s' % (neighbor, income)
 
 if __name__=='__main__':
     mapper()

@@ -19,7 +19,7 @@ def reducer():
             continue
         if current_key == key:
             current_list.append((pic_tm, drp_tm))
-        else:
+        else: # key changes
             if current_key and current_list:
                 current_list.sort()
                 last_drp_tm = None
@@ -31,8 +31,9 @@ def reducer():
                             minutes += delta
                     last_drp_tm = drp_tm
                 print '%s\t%s' % (current_key[-10:], minutes)
-            current_key = key
+            current_key = key   # reset and switch to new key
             current_list = []
+            current_list.append((pic_tm, drp_tm))
     if current_key == key:
         current_list.sort()
         last_drp_tm = None

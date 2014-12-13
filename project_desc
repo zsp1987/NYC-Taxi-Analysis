@@ -1,0 +1,55 @@
+#Massive Data Analysis 2014: Class project
+
+###Task
+---
+You will analyze NYC taxi data. Different groups will study different aspects of the data, and together, the class will create a comprehensive report about the "State of NYC Taxis".
+You can select one or more of the areas below to focus your analysis on. While I provide suggestions for what you can look for, I expect you to use your creativity and go beyond those suggestions. Besides exploring the taxi data, you must also use at least one additional data set in your analysis.
+
+####Understanding tips
+    How tips vary across different neighborhoods ? For instance, suppose you take trips having the same duration (or having very similar fare). Do trips starting in Upper East Side have a higher tip than trips starting in Soho ? Which neighborhoods tip higher ?
+    What is the overall distribution of tips? Is there a correlation between the amount of tips and whether the fare was paid by cash or credit card?
+    How does the “tip distribution” correlate with the median household income? Do citizens leaving from or arriving at affluent areas tip more or less than the ones living in less affluent neighborhoods?
+####Understanding taxi usage
+    Which neighborhoods are better served by taxis? How this correlates with the median household income per neighborhood ?
+    How does taxi density vary over time? During the day? On weekdays vs. weekends and holidays?
+    Are there regions where the taxi density is always high (or low)?
+    What are the most popular destinations? Do these change over time? For example, summer vs the other seasons?
+    What are the most popular trips (source, destination)?
+    Is the number of trips and taxis affected by weather? E.g., are there fewer cabs when it is raining/snowing?
+####Understanding taxi economics
+    How does revenue vary across neighborhoods and how does it correlate with the median household income in the neighborhood?
+    How does revenue vary over time? Are the months or seasons when taxi companies make more (or less) money?
+    How long do cab drives ride without passengers? How does this vary over time?
+    Are revenues affected during major events? E.g., parades, presidential visits, storms
+####Understanding driver behavior
+    How do different drivers work? Do drivers (or group of drivers) have a preferred neighborhood (or set of neighborhoods)? What does the pickup/dropoff distribution looks like? Does this preference change over time?
+    Are there patterns shared among different drivers?
+    Do some drivers get higher tips on average than others?
+    Do some drivers take longer routes than others?
+
+###Data sources
+---
+2013 Taxi data
+    Trip data: http://chriswhong.com/wp-content/uploads/2014/06/nycTaxiTripData2013.torrent
+    Fare data: http://chriswhong.com/wp-content/uploads/2014/06/nycTaxiFareData2013.torrent
+Census data
+    Demographics: http://www.nyc.gov/html/dcp/html/census/demo_tables_2010.shtml
+    Income information: http://www.nyc.gov/html/dcp/html/census/socio_tables.shtml
+Weather data
+    http://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets
+    http://www7.ncdc.noaa.gov/CDO/dataproduct -- select "Surface Data, Hourly Global", and then when it comes to select the region, choose NY and the three main stations (Central Park, JFK and LaGuardia).
+
+###Project Mechanics
+---
+You should for a group with *at most 3 people*. You have to use the Hadoop environment to carry out your analyses -- you can write mapreduce programs, use Pig, and any other tool that works on Hadoop. Your code and scripts should be made available on GitHub and you should include enough information so that others can reproduce what you did. You will also maintain a GoogleDoc that you will share with me that describes your project, the questions you are investigating, and what you have done so far. Please use this form to register your group and provide the information about your GitHub repo and Google Doc: https://docs.google.com/forms/d/1x35F-bKehzvHopjaiNV1CMlaCe5NEqoT-6IGigsLng0/viewform?usp=send_form
+You have 3 milestones:
+
+Nov 17th: you should have loaded it into the cloud and 'play' with it. In your Google Doc, you should discuss any issues you encountered, specify the problem area you will investigate, and outline your plan. (The set of questions can evolve and you can add more questions later.)
+Dec 1st: preliminary results from your analysis should be added to the Google Doc and one member of the group will give a short presentation in class about the preliminary findings
+Dec 15th: project presentation -- each group will present their results
+
+Project Report
+You can use your Google Doc as the starting point for your report.
+You should describe your experience, issues you encountered (e.g., dirty data) and how you dealt with them.
+You should report on and explain the findings of your analysis -- the use of insightful visualizations is highly encouraged.
+You should describe the experimental setup (cluster configuration, number of mappers/reducers, tools you used) as well as report on the performance of your approach (e.g., report the running times of the scripts) and any optimizations you applied to speed up your code.

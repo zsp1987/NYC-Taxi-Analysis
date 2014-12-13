@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import itertools, operator, sys
+import sys
 
 def parseInput():
     for line in sys.stdin:
@@ -14,7 +14,7 @@ def reducer():
         month, amount = line.split('\t')
         try:
             amount = float(amount)
-        except E:
+        except Exception:
             continue
         if current_key == month:
             current_amount += amount
