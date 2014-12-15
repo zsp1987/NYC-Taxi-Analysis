@@ -36,6 +36,8 @@ def mapper():
     index = rtree.Index()
     neighborhoods = []
     readNeighborhood('ZillowNeighborhoods-NY.shp', index, neighborhoods)
+    
+    # read taxi trip and fare data 
     for values in parseInput():
         pickup_neighborhood=-1        # default as first
         total = -1              # default as first

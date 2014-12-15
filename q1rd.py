@@ -15,6 +15,8 @@ def reducer():
     current_key = None
     neighbor_list = []
     current_amount = 0.0
+
+    # for each driver, assign him/her the neighbor with maximal frequency
     for line in parseInput():
         key, neighbor, amount = line.split('\t')
         if key == current_key:

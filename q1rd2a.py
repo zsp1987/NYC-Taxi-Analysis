@@ -11,6 +11,9 @@ def parseInput():
 def reducer():
     current_key = None
     current_list = []
+
+    # select the median as the representative of a taxi driver's revenue in 
+    # specific neighbor
     for line in parseInput():
         neighbor, income = line.split('\t')
         try:

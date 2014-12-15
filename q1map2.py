@@ -8,6 +8,7 @@ def parseInput():
             yield line
 
 def mapper():
+	# output multiple driver's assigned neighbor and income
     for line in parseInput():
         neighbor, income = line.split('\t')
         print '%s\t%s' % (neighbor, income)
